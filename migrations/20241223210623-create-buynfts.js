@@ -24,7 +24,7 @@ export default {
       user_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Users",
+          model: "users",
           key: "id",
         },
         allowNull: false,

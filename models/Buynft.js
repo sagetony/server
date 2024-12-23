@@ -20,7 +20,7 @@ const Buynft = (sequelize) => {
       user_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: "Users", // Ensure this matches your table name in the database
+          model: "users", // Ensure this matches your table name in the database
           key: "id",
         },
         allowNull: false,
