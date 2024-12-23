@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "sagetony",
-    "database": "skymate",
-    "host": "127.0.0.1",
+    "username": "freedb_smcckbiv_skymate",
+    "password": "TNF!fC*27Tpt5jA",
+    "database": "freedb_smcckbiv_skymate",
+    "host": "sql.freedb.tech",
     "dialect": "mysql"
   },
   "test": {
