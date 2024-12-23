@@ -8,9 +8,9 @@ const { username, password, database, host, dialect } = config.development;
 const sequelize = new Sequelize(database, username, password, {
   host,
   dialect,
-  logging: false,
+  logging: true,
 });
-
+console.log(sequelize,host, password,username );
 // Test the connection
 try {
   await sequelize.authenticate(); // Test the connection to the database
