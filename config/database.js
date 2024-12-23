@@ -8,7 +8,7 @@ const { username, password, database, host, dialect } = config.development;
 const sequelize = new Sequelize(database, username, password, {
   host,
   dialect,
-  logging: true,
+  logging: console.log,  
 });
 console.log("sdsds", host, password, username );
 // Test the connection
