@@ -61,35 +61,36 @@ app.get("/nonce", function (_, res) {
 // verify the message
 app.post("/verify", async (req, res) => {
   try {
-    if (!req.body.message) {
-      return res.status(400).json({ error: "SiweMessage is undefined" });
-    }
-    const message = req.body.message;
+    // if (!req.body.message) {
+    //   return res.status(400).json({ error: "SiweMessage is undefined" });
+    // }
+    // const message = req.body.message;
 
-    const address = getAddressFromMessage(message);
-    let chainId = getChainIdFromMessage(message);
+    // const address = getAddressFromMessage(message);
+    // let chainId = getChainIdFromMessage(message);
 
-    const isValid = await verifySignature({
-      address,
-      message,
-      signature: req.body.signature,
-      chainId,
-      projectId,
-    });
+    // const isValid = await verifySignature({
+    //   address,
+    //   message,
+    //   signature: req.body.signature,
+    //   chainId,
+    //   projectId,
+    // });
 
-    if (!isValid) {
-      // throw an error if the signature is invalid
-      throw new Error("Invalid signature");
-    }
-    if (chainId.includes(":")) {
-      chainId = chainId.split(":")[1];
-    }
-    // Convert chainId to a number
-    chainId = Number(chainId);
+    // if (!isValid) {
+    //   // throw an error if the signature is invalid
+    //   throw new Error("Invalid signature");
+    // }
+    // if (chainId.includes(":")) {
+    //   chainId = chainId.split(":")[1];
+    // }
+    // // Convert chainId to a number
+    // chainId = Number(chainId);
 
-    if (isNaN(chainId)) {
-      throw new Error("Invalid chainId");
-    }
+    // if (isNaN(chainId)) {
+    //   throw new Error("Invalid chainId");
+    // }
+    let address = "sdsd";
 
     // Check if the user exists or create a new one
     let user = await models.User.findOne({ where: { wallet: address } });
@@ -107,12 +108,13 @@ app.post("/verify", async (req, res) => {
       { id: user.id, wallet: user.wallet }, // Payload
       secretKey // Secret key to sign the token (use an environment variable for security)
     );
+    res.status(200).json({ success: true, token: token, user: user });
 
     // // save the session with the address and chainId (SIWESession)
-    req.session.siwe = { address, chainId };
-    req.session.save(() =>
-      res.status(200).json({ success: true, token: token, user: user })
-    );
+    // req.session.siwe = { address, chainId };
+    // req.session.save(() =>
+    //   res.status(200).json({ success: true, token: token, user: user })
+    // );
     // req.session.save(() => res.status(200).send(true));
   } catch (e) {
     console.error("Error during verification:", e.stack);
