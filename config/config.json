@@ -4,7 +4,13 @@
     "password": "uG9jGWVP2ohIOtX05Amr",
     "database": "bcpulahqo8ghy1valhoo",
     "host": "bcpulahqo8ghy1valhoo-mysql.services.clever-cloud.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
   },
   "ent": {
     "username": "sql7753841",

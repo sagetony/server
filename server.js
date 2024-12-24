@@ -144,7 +144,7 @@ app.get("/test", async (req, res) => {
       status: "Active", // Default status for a new user
     });
   }
-  res.status(500).json({ message: user });
+  res.status(200).json({ message: user });
 });
 
 // signout and clean the session
