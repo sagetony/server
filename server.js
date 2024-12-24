@@ -137,8 +137,12 @@ app.get("/session", (req, res) => {
 app.get("/test", (req, res) => {
   res.status(200).json({ message: "Working" });
 });
-app.post("/testing", (req, res) => {
-  res.status(200).json({ message: "Working" });
+app.post("/testing", async (req, res) => {
+  let address = "sdsd";
+
+  // Check if the user exists or create a new one
+  let user = await models.User.findOne({ where: { wallet: address } });
+  res.status(200).json({ message: user });
 });
 
 // signout and clean the session
