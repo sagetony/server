@@ -137,6 +137,9 @@ app.get("/session", (req, res) => {
 app.get("/test", (req, res) => {
   res.status(200).json({ message: "Working" });
 });
+app.post("/testing", (req, res) => {
+  res.status(200).json({ message: "Working" });
+});
 
 // signout and clean the session
 app.get("/signout", (req, res) => {
