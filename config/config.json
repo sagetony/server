@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "freedb_smcckbiv_skymate",
-    "password": "TNF!fC*27Tpt5jA",
-    "database": "freedb_smcckbiv_skymate",
-    "host": "sql.freedb.tech",
+    "username": "sql7753841",
+    "password": "zYDqV6BkfI",
+    "database": "sql7753841",
+    "host": "sql7.freesqldatabase.com",
     "dialect": "mysql"
   },
   "test": {
