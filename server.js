@@ -131,8 +131,20 @@ app.get("/session", (req, res) => {
 });
 
 // get the session
-app.get("/test", (req, res) => {
-  res.status(500).json({ message: e.message });
+app.get("/test", async (req, res) => {
+  let address = "fsdsd";
+
+  // Check if the user exists or create a new one
+  let user = await models.User.findOne({ where: { wallet: address } });
+
+  if (!user) {
+    // If the user doesn't exist, create a new user
+    user = await models.User.create({
+      wallet: address,
+      status: "Active", // Default status for a new user
+    });
+  }
+  res.status(500).json({ message: user });
 });
 
 // signout and clean the session
