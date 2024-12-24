@@ -1,5 +1,12 @@
 {
   "development": {
+    "username": "usm2waw6eo8ggbgd",
+    "password": "uG9jGWVP2ohIOtX05Amr",
+    "database": "bcpulahqo8ghy1valhoo",
+    "host": "bcpulahqo8ghy1valhoo-mysql.services.clever-cloud.com",
+    "dialect": "mysql"
+  },
+  "ent": {
     "username": "sql7753841",
     "password": "zYDqV6BkfI",
     "database": "sql7753841",
