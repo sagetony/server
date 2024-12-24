@@ -131,6 +131,11 @@ app.get("/session", (req, res) => {
   res.send(req.session.siwe);
 });
 
+// get the session
+app.get("/test", (req, res) => {
+  res.status(200).json({ message: "Working" });
+});
+
 // signout and clean the session
 app.get("/signout", (req, res) => {
   // Optional: Add the token to a blacklist to invalidate it
