@@ -5,8 +5,10 @@ import config from "./config.json" with { type: "json" };
 const { username, password, database, host, dialect } = config.development;
 
 // Create a Sequelize instance using the imported configuration
-const sequelize = new Sequelize('mysql://username:password@sql.freedb.tech:3306/database', {
-  dialect: 'mysql',
+const sequelize = new Sequelize(database, username, password, {
+  host,
+  dialect,
+  logging: console.log,  
 });
 console.log("sdsds", host, password, username );
 // Test the connection
