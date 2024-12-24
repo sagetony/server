@@ -31,7 +31,7 @@ app.use(express.json());
 // configure cors and sessions
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend URL
+    origin: "https://sky-project-mu.vercel.app", // frontend URL
     credentials: true,
   })
 );
@@ -132,22 +132,22 @@ app.get("/session", (req, res) => {
   res.send(req.session.siwe);
 });
 
-// get the session
-app.get("/test", async (req, res) => {
-  let address = "fsdsd";
+// // get the session
+// app.get("/test", async (req, res) => {
+//   let address = "fsdsd";
 
-  // Check if the user exists or create a new one
-  let user = await models.User.findOne({ where: { wallet: address } });
+//   // Check if the user exists or create a new one
+//   let user = await models.User.findOne({ where: { wallet: address } });
 
-  if (!user) {
-    // If the user doesn't exist, create a new user
-    user = await models.User.create({
-      wallet: address,
-      status: "Active", // Default status for a new user
-    });
-  }
-  res.status(200).json({ message: user });
-});
+//   if (!user) {
+//     // If the user doesn't exist, create a new user
+//     user = await models.User.create({
+//       wallet: address,
+//       status: "Active", // Default status for a new user
+//     });
+//   }
+//   res.status(200).json({ message: user });
+// });
 
 // signout and clean the session
 app.get("/signout", (req, res) => {
