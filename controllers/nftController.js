@@ -150,10 +150,6 @@ const updateNFT = async (req, res) => {
     // Optionally, fetch the updated NFT details
     const updatedNft = await models.Nft.findOne({
       where: { tokenId },
-      include: [
-        { model: models.Buynft, as: "buynft" },
-        { model: models.User, as: "user" },
-      ],
     });
 
     return res.status(200).json({

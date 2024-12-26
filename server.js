@@ -28,11 +28,34 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// List of allowed origins
+const allowedOrigins = [
+  "http://localhost:5173", // Local development
+  "https://sky-project-mu.vercel.app", // Production frontend
+  "http://localhost:5174", // Another allowed origin
+  "http://localhost:5175", // Another allowed origin
+];
+
 // configure cors and sessions
+// app.use(
+//   cors({
+// origin: "https://sky-project-mu.vercel.app", // frontend URL
+//     credentials: true,
+//   })
+// );
+
+// CORS middleware
 app.use(
   cors({
-    origin: "https://sky-project-mu.vercel.app", // frontend URL
-    credentials: true,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // Allow cookies or other credentials
   })
 );
 
