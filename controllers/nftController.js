@@ -115,5 +115,64 @@ const loadBoughtNFT = async (req, res) => {
   }
 };
 
+const loadunSoldNFT = async (req, res) => {
+  try {
+    const unsoldNfts = await models.Nft.findAll({
+      where: { status: true }, // Filter for NFTs with status: false
+      order: [["createdAt", "DESC"]],
+      limit: 5,
+    });
+
+    return res.status(200).json({ nfts: unsoldNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+
+const updateNFT = async (req, res) => {
+  try {
+    const { tokenId, owner } = req.body;
+
+    // Validate required fields
+    if (!tokenId) {
+      return res.status(400).json({ message: "TokenId is required" });
+    }
+
+    // Find the NFT by tokenId
+    const nft = await models.Nft.findOne({ where: { tokenId } });
+    if (!nft) {
+      return res.status(404).json({ message: "NFT not found" });
+    }
+    // Update the NFT status to false
+    await models.Nft.update({ status: false }, { where: { tokenId } });
+
+    // Optionally, fetch the updated NFT details
+    const updatedNft = await models.Nft.findOne({
+      where: { tokenId },
+      include: [
+        { model: models.Buynft, as: "buynft" },
+        { model: models.User, as: "user" },
+      ],
+    });
+
+    return res.status(200).json({
+      status: "success",
+      message: "NFT is sold",
+      nft: updatedNft,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+
 // Export as default
-export default { uploadNFT, loadNFT, buyNFT, loadBoughtNFT };
+export default {
+  uploadNFT,
+  loadNFT,
+  buyNFT,
+  loadBoughtNFT,
+  loadunSoldNFT,
+  updateNFT,
+};

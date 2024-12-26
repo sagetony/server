@@ -12,7 +12,11 @@ router.get("/load", nftController.loadNFT);
 // Buy NFT
 router.post("/buy", authenticate, nftController.buyNFT);
 
+router.post("/sold", authenticate, nftController.updateNFT);
+
 // Load Bought NFTs
 router.get("/bought", nftController.loadBoughtNFT);
+
+router.get("/unsoldenft", nftController.loadunSoldNFT);
 
 export default router;
