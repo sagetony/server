@@ -112,7 +112,7 @@ const loadBoughtNFT = async (req, res) => {
     return res.status(200).json({ nfts: boughtNfts });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: error });
   }
 };
 
