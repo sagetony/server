@@ -28,7 +28,7 @@ const Buynft = (sequelize) => {
     },
     {
       timestamps: true, // Ensure the model uses timestamps if needed
-      tableName: "buynfts", // Optional: specify table name if it's different from the default
+      tableName: "Buynfts", // Optional: specify table name if it's different from the default
     }
   );
   model.associate = (models) => {
