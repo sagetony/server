@@ -4,6 +4,7 @@ import Session from "express-session";
 import { generateNonce } from "siwe";
 import { fileURLToPath } from "url";
 import path from "path";
+import multer from "multer";
 
 import {
   verifySignature,
@@ -26,6 +27,11 @@ const secretKey = "9BvT6$z9s*QnH4pX@w5ZrJkV2e!Jm0";
 const projectId = process.env.PROJECT_ID;
 
 const app = express();
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Middleware to parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
@@ -61,10 +67,6 @@ app.use(
     credentials: true, // Allow cookies or other credentials
   })
 );
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(
   Session({

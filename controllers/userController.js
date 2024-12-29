@@ -1,11 +1,11 @@
 // import User from "../models/user.js"; // Assuming Sequelize model for User
 import path from "path";
 import { models } from "../models/index.js";
+import { validationResult } from "express-validator";
 
 // View user method
 export const viewUser = async (req, res) => {
   try {
-    
     const user = await models.User.findOne({
       where: { id: req.user.id },
     });
@@ -26,7 +26,13 @@ export const viewUser = async (req, res) => {
 // Edit user method
 export const editUser = async (req, res) => {
   try {
-    // Validate the incoming data
+    // Validate the incoming data using express-validator
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    // Prepare validated data
     const validatedData = {
       name: req.body.name || null,
       username: req.body.username || null,
@@ -41,9 +47,9 @@ export const editUser = async (req, res) => {
       facebook: req.body.facebook || null,
     };
 
-    // Handle file uploads for avatar and items
+    // Handle file uploads (avatar and items)
     if (req.files) {
-      // Handle avatar upload
+      // Handle avatar upload if present
       if (req.files.avatar) {
         const avatarPath = path.join("uploads", req.files.avatar[0].filename);
         validatedData.avatar = avatarPath;
@@ -61,7 +67,7 @@ export const editUser = async (req, res) => {
       }
     }
 
-    // Update user in the database
+    // Find the user by ID
     const user = await models.User.findOne({
       where: { id: req.user.id },
     });
@@ -78,7 +84,10 @@ export const editUser = async (req, res) => {
       data: validatedData,
     });
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "An error occurred" });
+    console.error("Error during user update:", error);
+    return res.status(500).json({
+      error:
+        "An unexpected error occurred while updating the user. Please try again later.",
+    });
   }
 };

@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import authenticate from "../middlewares/authenticate.js";
-import upload from "../middlewares/upload.js";
+import { upload } from "../middlewares/upload.js";
 import { viewUser, editUser } from "../controllers/userController.js";
 
 // View user (GET /view-user)
