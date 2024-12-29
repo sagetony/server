@@ -2,6 +2,9 @@ import cors from "cors";
 import express from "express";
 import Session from "express-session";
 import { generateNonce } from "siwe";
+import { fileURLToPath } from "url";
+import path from "path";
+
 import {
   verifySignature,
   getAddressFromMessage,
@@ -58,6 +61,10 @@ app.use(
     credentials: true, // Allow cookies or other credentials
   })
 );
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(
   Session({
