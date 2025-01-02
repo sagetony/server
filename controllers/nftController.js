@@ -163,6 +163,207 @@ const updateNFT = async (req, res) => {
   }
 };
 
+// NFTS
+const loadBoughtNFTFirst = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "A" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+const loadBoughtNFTB = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "B" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+const loadBoughtNFTC = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "C" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+const loadBoughtNFTD = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "D" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+const loadBoughtNFTE = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "E" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+const loadBoughtNFTF = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "F" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+const loadBoughtNFTG = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "G" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+const loadBoughtNFTH = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "H" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+const loadBoughtNFI = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "I" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+const loadBoughtNFTJ = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "J" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+
+const loadBoughtNFTK = async (req, res) => {
+  try {
+    const boughtNfts = await models.Buynft.findAll({
+      include: [
+        {
+          model: models.Nft,
+          as: "nft",
+          where: { zonename: "K" }, // Filter NFTs with zonename "A"
+        },
+        { model: models.User, as: "user" },
+      ],
+    });
+    return res.status(200).json({ nfts: boughtNfts });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error });
+  }
+};
+
 // Export as default
 export default {
   uploadNFT,
@@ -171,4 +372,15 @@ export default {
   loadBoughtNFT,
   loadunSoldNFT,
   updateNFT,
+  loadBoughtNFTFirst,
+  loadBoughtNFTB,
+  loadBoughtNFTC,
+  loadBoughtNFTD,
+  loadBoughtNFTE,
+  loadBoughtNFTF,
+  loadBoughtNFTG,
+  loadBoughtNFTH,
+  loadBoughtNFTI,
+  loadBoughtNFTJ,
+  loadBoughtNFTK,
 };

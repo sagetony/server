@@ -41,6 +41,10 @@ const Nft = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: true, // Assuming the default is 'active' NFT
       },
+      zonename: {
+        type: DataTypes.STRING, // Add the new zonename field
+        allowNull: true, // Make it nullable if it's optional
+      },
     },
     {
       timestamps: true, // Ensure the model uses timestamps if needed
