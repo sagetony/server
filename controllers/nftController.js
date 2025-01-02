@@ -308,7 +308,7 @@ const loadBoughtNFTH = async (req, res) => {
     return res.status(500).json({ message: error });
   }
 };
-const loadBoughtNFI = async (req, res) => {
+const loadBoughtNFTI = async (req, res) => {
   try {
     const boughtNfts = await models.Buynft.findAll({
       include: [
