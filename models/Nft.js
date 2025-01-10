@@ -45,6 +45,10 @@ const Nft = (sequelize) => {
         type: DataTypes.STRING, // Add the new zonename field
         allowNull: true, // Make it nullable if it's optional
       },
+      size: {
+        type: DataTypes.STRING, // Add the new land size  field
+        allowNull: true, // Make it nullable if it's optional
+      },
     },
     {
       timestamps: true, // Ensure the model uses timestamps if needed

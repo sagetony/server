@@ -14,6 +14,7 @@ const uploadNFT = async (req, res) => {
       price,
       metadataURL,
       coordinates,
+      size,
     } = req.body;
 
     if (
@@ -24,7 +25,8 @@ const uploadNFT = async (req, res) => {
       !name ||
       !price ||
       !metadataURL ||
-      !coordinates
+      !coordinates ||
+      size
     ) {
       return res.status(400).json({
         message: "All fields are required",
@@ -40,6 +42,7 @@ const uploadNFT = async (req, res) => {
       price,
       metadataURL,
       coordinates,
+      size,
     });
     return res.status(200).json({ message: "NFT uploaded successfully!" });
   } catch (error) {
