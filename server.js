@@ -28,7 +28,6 @@ const projectId = process.env.PROJECT_ID;
 
 const app = express();
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -43,6 +42,7 @@ const allowedOrigins = [
   "https://sky-project-mu.vercel.app", // Production frontend
   "http://localhost:5174", // Another allowed origin
   "http://localhost:5175", // Another allowed origin
+  "http://localhost:3000", // Another allowed origin
 ];
 
 // configure cors and sessions
