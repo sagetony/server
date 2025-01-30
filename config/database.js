@@ -10,7 +10,6 @@ const sequelize = new Sequelize(database, username, password, {
   dialect,
   logging: console.log,  
 });
-console.log("sdsds", host, password, username );
 // Test the connection
 try {
   await sequelize.authenticate(); // Test the connection to the database
